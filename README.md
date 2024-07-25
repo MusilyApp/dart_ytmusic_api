@@ -1,0 +1,1 @@
+Ported from [ts-npm-music-api](https://github.com/zS1L3NT/ts-npm-ytmusic-api)
