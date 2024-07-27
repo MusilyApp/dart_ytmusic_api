@@ -494,8 +494,15 @@ class YTMusic {
     final album = AlbumParser.parse(data, albumId);
 
     final artistSongs = await getArtistSongs(album.artist.artistId ?? '');
+    final filteredSongs = artistSongs.where(
+      (song) => album.songs
+          .where((item) =>
+              '${song.album?.name}-${song.name}' ==
+              '${item.album?.name}-${item.name}')
+          .isNotEmpty,
+    );
 
-    return album..songs = artistSongs;
+    return album..songs = [...filteredSongs];
   }
 
   /// Retrieves detailed information about a playlist given its playlist ID.
