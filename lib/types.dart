@@ -325,7 +325,7 @@ class AlbumFull {
   final ArtistBasic artist;
   final int? year;
   final List<ThumbnailFull> thumbnails;
-  final List<SongDetailed> songs;
+  List<SongDetailed> songs;
 
   AlbumFull({
     required this.type,
