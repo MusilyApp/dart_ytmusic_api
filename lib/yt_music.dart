@@ -491,7 +491,11 @@ class YTMusic {
   Future<AlbumFull> getAlbum(String albumId) async {
     final data = await constructRequest("browse", body: {"browseId": albumId});
 
-    return AlbumParser.parse(data, albumId);
+    final album = AlbumParser.parse(data, albumId);
+
+    final artistSongs = await getArtistSongs(album.artist.artistId ?? '');
+
+    return album..songs = artistSongs;
   }
 
   /// Retrieves detailed information about a playlist given its playlist ID.
