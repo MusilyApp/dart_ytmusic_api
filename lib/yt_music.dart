@@ -502,7 +502,15 @@ class YTMusic {
           .isNotEmpty,
     );
 
-    return album..songs = [...filteredSongs];
+    final songsThatArentInArtist = album.songs.where(
+      (item) => artistSongs
+          .where((song) =>
+              '${song.album?.name}-${song.name}' ==
+              '${item.album?.name}-${item.name}')
+          .isEmpty,
+    );
+
+    return album..songs = [...filteredSongs, ...songsThatArentInArtist];
   }
 
   /// Retrieves detailed information about a playlist given its playlist ID.
