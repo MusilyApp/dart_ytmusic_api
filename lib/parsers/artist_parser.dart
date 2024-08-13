@@ -43,7 +43,8 @@ class ArtistParser {
                       .toList() ??
                   <AlbumDetailed>[])
           .where(
-            (single) => single.albumId.isNotEmpty,
+            (single) =>
+                single.albumId.isNotEmpty && single.albumId.startsWith('M'),
           )
           .toList(),
       topVideos: traverseList(data, ["musicCarouselShelfRenderer"]).length < 3
