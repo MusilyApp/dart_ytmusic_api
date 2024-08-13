@@ -22,22 +22,30 @@ class ArtistParser {
       topSongs: traverseList(data, ["musicShelfRenderer", "contents"])
           .map((item) => SongParser.parseArtistTopSong(item, artistBasic))
           .toList(),
-      topAlbums: traverseList(data, ["musicCarouselShelfRenderer"]).isEmpty
-          ? <AlbumDetailed>[]
-          : (traverseList(data, ["musicCarouselShelfRenderer"])
-                      .elementAt(0)?['contents'] as List<dynamic>?)
-                  ?.map((item) =>
-                      AlbumParser.parseArtistTopAlbum(item, artistBasic))
-                  .toList() ??
-              <AlbumDetailed>[],
-      topSingles: traverseList(data, ["musicCarouselShelfRenderer"]).length < 2
-          ? <AlbumDetailed>[]
-          : (traverseList(data, ["musicCarouselShelfRenderer"])
-                      .elementAt(1)?['contents'] as List<dynamic>?)
-                  ?.map((item) =>
-                      AlbumParser.parseArtistTopAlbum(item, artistBasic))
-                  .toList() ??
-              <AlbumDetailed>[],
+      topAlbums: (traverseList(data, ["musicCarouselShelfRenderer"]).isEmpty
+              ? <AlbumDetailed>[]
+              : (traverseList(data, ["musicCarouselShelfRenderer"])
+                          .elementAt(0)?['contents'] as List<dynamic>?)
+                      ?.map((item) =>
+                          AlbumParser.parseArtistTopAlbum(item, artistBasic))
+                      .toList() ??
+                  <AlbumDetailed>[])
+          .where(
+            (album) => album.albumId.isNotEmpty,
+          )
+          .toList(),
+      topSingles: (traverseList(data, ["musicCarouselShelfRenderer"]).length < 2
+              ? <AlbumDetailed>[]
+              : (traverseList(data, ["musicCarouselShelfRenderer"])
+                          .elementAt(1)?['contents'] as List<dynamic>?)
+                      ?.map((item) =>
+                          AlbumParser.parseArtistTopAlbum(item, artistBasic))
+                      .toList() ??
+                  <AlbumDetailed>[])
+          .where(
+            (single) => single.albumId.isNotEmpty,
+          )
+          .toList(),
       topVideos: traverseList(data, ["musicCarouselShelfRenderer"]).length < 3
           ? <VideoDetailed>[]
           : (traverseList(data, ["musicCarouselShelfRenderer"])
