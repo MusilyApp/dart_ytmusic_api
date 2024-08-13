@@ -2,6 +2,7 @@ name: dart_ytmusic_api
 description: Unofficial YouTube Music Api for dart 
 version: 1.0.5
 repository: https://github.com/MusilyApp/dart_ytmusic_api.git
+publish_to: 'hosted'
 
 environment:
   sdk: ^3.4.3
