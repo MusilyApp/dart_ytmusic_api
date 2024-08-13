@@ -1,3 +1,10 @@
+## 1.0.5
+
+**Fixes**
+- Fixed albumParser: Fixed bad element when ids array is empty.
+- Fixed artistPaser: Fixed filters to prevent return items where albumId is empty.
+- Fixed songParser: Fixed duration parser.
+
 ## 1.0.4
 
 - Fixed no songs in some albums
