@@ -60,6 +60,8 @@ class SongParser {
     final title = columns.firstWhere(isTitle, orElse: () => null);
     final album = columns.firstWhere(isAlbum, orElse: () => null);
     final duration = columns.firstWhere(isDuration, orElse: () => null);
+    final cleanedDuration =
+        duration?['text']?.replaceAll(RegExp(r'[^0-9:]'), '');
 
     return SongDetailed(
       type: "SONG",
@@ -72,7 +74,7 @@ class SongParser {
               albumId: traverseString(album, ["browseId"]) ?? '',
             )
           : null,
-      duration: Parser.parseDuration(duration?.text),
+      duration: Parser.parseDuration(cleanedDuration),
       thumbnails: traverseList(item, ["thumbnails"])
           .map((item) => ThumbnailFull.fromMap(item))
           .toList(),
