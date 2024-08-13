@@ -1,3 +1,8 @@
+## 1.0.6
+
+**Fixes**
+- Fixed song duration handler
+
 ## 1.0.5
 
 **Fixes**

@@ -28,7 +28,7 @@ Add the following line to your `pubspec.yaml` file under the `dependencies` sect
 
 ```yaml
 dependencies:
-  dart_ytmusic_api: ^1.0.0
+  dart_ytmusic_api: ^1.0.6
 ```
 
 Then, run `flutter pub get` (for Flutter projects) or `dart pub get` (for general Dart projects) to install the package.
@@ -47,7 +47,7 @@ void main() async {
   await ytmusic.initialize();
 
   // There's how you can use a method
-  final albumResults = await ytmusic.searchAlbums();
+  final albumResults = await ytmusic.searchAlbums('query');
 }
 ```
 
