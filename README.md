@@ -92,6 +92,10 @@ The following methods are available in the `YTMusic` class:
 
 - `getHomeSections()`: Retrieves the home sections of the music platform.
 
+## Known Issues
+
+- **`getPlaylistVideos` is not working as expected.** The method currently returns an "Invalid request" error. This issue is under investigation. 
+
 ## Contributing
 
 Contributions are welcome! Please feel free to open issues, submit pull requests, or reach out if you have any questions.
