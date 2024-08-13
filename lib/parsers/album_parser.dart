@@ -93,7 +93,9 @@ class AlbumParser {
       dynamic item, ArtistBasic artistBasic) {
     return AlbumDetailed(
       type: "ALBUM",
-      albumId: traverseList(item, ["browseId"]).last,
+      albumId: traverseList(item, ["browseId"]).isEmpty
+          ? ''
+          : traverseList(item, ["browseId"]).last,
       playlistId:
           traverseString(item, ["musicPlayButtonRenderer", "playlistId"]) ?? '',
       name: traverseString(item, ["title", "text"]) ?? '',
