@@ -27,7 +27,7 @@ class SongParser {
     final columns = traverseList(item, ["flexColumns", "runs"]);
     // It is not possible to identify the title and author
     final title = columns[0];
-    final artist = columns.firstWhere(isArtist, orElse: () => columns[3]);
+    final artist = columns.firstWhere(isArtist, orElse: () => columns[1]);
     final album = columns.firstWhere(isAlbum, orElse: () => null);
     final duration = columns.firstWhere(
         (item) => isDuration(item) && item != title,

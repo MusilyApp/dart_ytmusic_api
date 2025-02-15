@@ -6,7 +6,7 @@ import 'package:dart_ytmusic_api/utils/traverse.dart';
 
 class Parser {
   static int? parseDuration(String? time) {
-    final regex = RegExp(r'\((\d{1,2}:\d{2})\)');
+    final regex = RegExp(r'(\d{1,2}:\d{2})');
     final match = regex.firstMatch(time ?? '00:00');
     if (time == null || match == null) return null;
 
