@@ -1,3 +1,11 @@
+## 1.3.7
+
+**Fix**
+- Fixed `searchSongs` and all song parsers returning empty `videoId`: YouTube Music API removed the `playlistItemData` field; now extracting `videoId` via `watchEndpoint`.
+- Fixed `getPlaylistVideos` crashing with a type error when expanding `flexColumns`/`fixedColumns` from playlist items.
+- Fixed `getPlaylistVideos` crashing with a `RangeError` when a playlist has no continuation token (empty list unwrap guard).
+- Fixed `VideoParser.parsePlaylistVideo` using dynamic `.url` and `.text` property access on raw `Map` objects; replaced with proper bracket notation and `traverseString`.
+
 ## 1.3.6
 **Fix**
 - Critical API crash on non-English systems: Resolved a FormatException that prevented the application from working on operating systems with non-English locales (e.g., Portuguese, Spanish). The issue was caused by an invalid timezone format in API request headers.

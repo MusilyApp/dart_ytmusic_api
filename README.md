@@ -28,7 +28,7 @@ Add the following line to your `pubspec.yaml` file under the `dependencies` sect
 
 ```yaml
 dependencies:
-  dart_ytmusic_api: ^1.3.5
+  dart_ytmusic_api: ^1.3.7
 ```
 
 Then, run `flutter pub get` (for Flutter projects) or `dart pub get` (for general Dart projects) to install the package.
@@ -93,10 +93,6 @@ The following methods are available in the `YTMusic` class:
 **Home Section**
 
 - `getHomeSections()`: Retrieves the home sections of the music platform.
-
-## Known Issues
-
-- **`getPlaylistVideos` is not working as expected.** The method currently returns an "Invalid request" error. This issue is under investigation. 
 
 ## Contributing
 
