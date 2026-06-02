@@ -65,10 +65,12 @@ class VideoParser {
   }
 
   static VideoDetailed? parsePlaylistVideo(dynamic item) {
-    final flexColumns =
-        traverseList(item, ['flexColumns', 'runs']).expand((e) => e).toList();
-    final fixedColumns =
-        traverseList(item, ['fixedColumns', 'runs']).expand((e) => e).toList();
+    final flexColumns = traverseList(item, ['flexColumns', 'runs'])
+        .expand((e) => e is List ? e : [e])
+        .toList();
+    final fixedColumns = traverseList(item, ['fixedColumns', 'runs'])
+        .expand((e) => e is List ? e : [e])
+        .toList();
 
     final title = flexColumns.firstWhere(isTitle,
         orElse: () => flexColumns.isNotEmpty ? flexColumns[0] : null);
@@ -79,7 +81,7 @@ class VideoParser {
     final videoId1 =
         traverseString(item, ["playNavigationEndpoint", "videoId"]);
     final videoId2 = RegExp(r"https:\/\/i\.ytimg\.com\/vi\/(.+)\/")
-        .firstMatch(traverseList(item, ["thumbnails"]).firstOrNull?.url ?? '')
+        .firstMatch(traverseString(item, ["thumbnails", "url"]) ?? '')
         ?.group(1);
 
     if ((videoId1?.isEmpty ?? true) && videoId2 == null) {
@@ -94,7 +96,7 @@ class VideoParser {
         name: traverseString(artist, ["text"]) ?? '',
         artistId: traverseString(artist, ["browseId"]),
       ),
-      duration: Parser.parseDuration(duration?.text),
+      duration: Parser.parseDuration(duration?['text']),
       thumbnails: traverseList(item, ["thumbnails"])
           .map((item) => ThumbnailFull.fromMap(item))
           .toList(),

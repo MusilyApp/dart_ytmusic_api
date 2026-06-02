@@ -35,7 +35,7 @@ class SongParser {
 
     return SongDetailed(
       type: "SONG",
-      videoId: traverseString(item, ["playlistItemData", "videoId"]) ?? '',
+      videoId: traverseString(item, ["watchEndpoint", "videoId"]) ?? '',
       name: traverseString(title, ["text"]) ?? '',
       artist: ArtistBasic(
         name: traverseString(artist, ["text"]) ?? '',
@@ -67,7 +67,7 @@ class SongParser {
 
     return SongDetailed(
       type: "SONG",
-      videoId: traverseString(item, ["playlistItemData", "videoId"]) ?? '',
+      videoId: traverseString(item, ["watchEndpoint", "videoId"]) ?? '',
       name: traverseString(title, ["text"]) ?? '',
       artist: artistBasic,
       album: album != null
@@ -94,7 +94,7 @@ class SongParser {
 
     return SongDetailed(
       type: "SONG",
-      videoId: traverseString(item, ["playlistItemData", "videoId"]) ?? '',
+      videoId: traverseString(item, ["watchEndpoint", "videoId"]) ?? '',
       name: traverseString(title, ["text"]) ?? '',
       artist: artistBasic,
       album: album != null
@@ -123,7 +123,7 @@ class SongParser {
 
     return SongDetailed(
       type: "SONG",
-      videoId: traverseString(item, ["playlistItemData", "videoId"]) ?? '',
+      videoId: traverseString(item, ["watchEndpoint", "videoId"]) ?? '',
       name: traverseString(title, ["text"]) ?? '',
       artist: artistBasic,
       album: albumBasic,

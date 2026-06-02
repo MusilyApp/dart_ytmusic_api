@@ -688,7 +688,7 @@ class YTMusic {
       ["musicPlaylistShelfRenderer", "musicResponsiveListItemRenderer"],
     );
     dynamic continuation = traverse(playlistData, ["continuation"]);
-    if (continuation is List) {
+    if (continuation is List && (continuation).isNotEmpty) {
       continuation = continuation[0];
     }
     while (continuation is! List) {
